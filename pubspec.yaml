@@ -11,14 +11,32 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.2
+  flutter_localizations:
+    sdk: flutter
+  ## https://github.com/keygenqt/dart-http-clickhouse
   dart_http_clickhouse:
     path: ../dart_http_clickhouse
+  ## https://pub.dev/packages/google_fonts
+  google_fonts: ^5.1.0
+  ## https://pub.dev/packages/scoped_model
+  scoped_model: ^2.0.0
+  ## https://pub.dev/packages/get_it
+  get_it: ^7.6.0
+  ## https://pub.dev/packages/intl
+  intl: ^0.18.0
+  ## https://pub.dev/packages/universal_io
+  universal_io: ^2.2.2
+  ## https://pub.dev/packages/cupertino_icons
+  cupertino_icons: ^1.0.5
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  ## https://pub.dev/packages/flutter_lints
+  flutter_lints: ^2.0.1
+  ## https://pub.dev/packages/build_runner
+  build_runner: ^2.4.5
 
 flutter:
+  generate: true
   uses-material-design: true
