@@ -71,12 +71,12 @@ class _AuthScreenState extends StateApp<AuthScreen> {
                           borderRadius: BorderRadius.all(Radius.circular(20)),
                           boxShadow: [
                             BoxShadow(
-                              color: const Color(0XFFE8ECF5).withOpacity(0.3),
+                              color: const Color(0XFF6788FF).withOpacity(0.3),
                               spreadRadius: 5,
                               blurRadius: 5,
                             ),
                             BoxShadow(
-                              color: const Color(0XFF6788FF).withOpacity(0.3),
+                              color: const Color(0XFFE8ECF5).withOpacity(0.3),
                               spreadRadius: 5,
                               blurRadius: 5,
                             ),
