@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_gui_clickhouse/base/di/app_di.dart';
 import 'package:flutter_gui_clickhouse/components/base/export.dart';
-import 'package:flutter_gui_clickhouse/components/texts/export.dart';
 import 'package:flutter_gui_clickhouse/pages/home/model.dart';
 import 'package:scoped_model/scoped_model.dart';
 
@@ -27,7 +26,12 @@ class _HomeScreenState extends StateApp<HomeScreen> {
       child: ScopedModelDescendant<HomeModel>(
         builder: (context, child, model) {
           return Scaffold(
-            body: TextBodyLarge(l10n.homeTitle),
+            body: Center(
+              child: ElevatedButton(
+                child: const Text('To Authentication'),
+                onPressed: () => Navigator.pushNamed(context, '/auth'),
+              ),
+            ),
           );
         },
       ),
