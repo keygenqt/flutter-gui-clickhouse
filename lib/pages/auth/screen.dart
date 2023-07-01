@@ -100,7 +100,7 @@ class _AuthScreenState extends StateApp<AuthScreen> {
                                           child: Column(
                                             children: [
                                               Text(
-                                                "Authentication",
+                                                "Connection",
                                                 style: TextStyle(fontSize: 24),
                                                 textAlign: TextAlign.center,
                                               ),

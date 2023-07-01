@@ -8,6 +8,13 @@ final appTheme = defaultTheme.copyWith(
     primary: AppColors.primary,
     secondary: AppColors.secondary,
   ),
+  scrollbarTheme: defaultTheme.scrollbarTheme.copyWith(
+    thumbVisibility: MaterialStateProperty.all<bool>(true),
+  ),
+  cardTheme: defaultTheme.cardTheme.copyWith(
+    color: Colors.white,
+    elevation: 0,
+  ),
   inputDecorationTheme: defaultTheme.inputDecorationTheme.copyWith(
     border: const OutlineInputBorder(
       gapPadding: 2,
@@ -16,7 +23,7 @@ final appTheme = defaultTheme.copyWith(
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       backgroundColor: AppColors.primary,
-      foregroundColor: Colors.white
+      foregroundColor: Colors.white,
     ),
   ),
 );

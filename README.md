@@ -1,16 +1,7 @@
-# flutter_gui_clickhouse
+# GUI ClickHouse
 
-Flutter GUI application for ClickHouse
+GUI ClickHouse is not official graphical user interface (GUI) tool for ClickHouse. It allow you connect to HTTP interface database and design, create and browse schemas.
 
-## Getting Started
+## Preview
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![preview_1.gif](data%2Fpreview%2Fpreview_1.gif)
