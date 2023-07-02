@@ -37,6 +37,8 @@ class _HomeScreenState extends StateApp<HomeScreen> {
     BuildContext context,
     AppLocalizations l10n,
   ) {
+    final width = MediaQuery.of(context).size.width;
+
     return ScopedModel<HomeModel>(
       model: getIt<HomeModel>(),
       child: ScopedModelDescendant<HomeModel>(
@@ -47,7 +49,6 @@ class _HomeScreenState extends StateApp<HomeScreen> {
               color: const Color(0XFFE8ECF5),
               child: Stack(
                 children: [
-
                   Stack(
                     children: [
                       SizedBox(
@@ -73,7 +74,6 @@ class _HomeScreenState extends StateApp<HomeScreen> {
                           ),
                         ),
                       ),
-
                       SizedBox(
                         child: Align(
                           alignment: Alignment.topRight,
@@ -97,7 +97,6 @@ class _HomeScreenState extends StateApp<HomeScreen> {
                           ),
                         ),
                       ),
-
                       SizedBox(
                         child: Align(
                           alignment: Alignment.topRight,
@@ -123,143 +122,172 @@ class _HomeScreenState extends StateApp<HomeScreen> {
                       ),
                     ],
                   ),
-                  Column(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.all(40),
-                        child: SizedBox(
-                          width: 800,
+                  Container(
+                    child: Column(
+                      children: [
+                        Flexible(
                           child: Column(
                             children: [
-                              Text(
-                                "Welcome to GUI ClickHouse",
-                                style: TextStyle(color: Colors.black, fontSize: 44),
-                                textAlign: TextAlign.center,
-                              ),
-                              SizedBox(height: 20),
-                              Text(
-                                "GUI ClickHouse is not official graphical user interface (GUI) tool for ClickHouse. It allow you connect to HTTP interface database and design, create and browse schemas.",
-                                style: TextStyle(color: Colors.black, fontSize: 18),
-                                textAlign: TextAlign.center,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 200,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            IconButton(
-                              tooltip: "Documentation",
-                              onPressed: () => debugPrint(''),
-                              icon: Icon(Icons.help_outline),
-                            ),
-                            IconButton(
-                              tooltip: "Source",
-                              onPressed: () => debugPrint(''),
-                              icon: Icon(Icons.code),
-                            ),
-                            IconButton(
-                              tooltip: "Group",
-                              onPressed: () => debugPrint(''),
-                              icon: Icon(Icons.forum_outlined),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(height: 10),
-                      Padding(
-                        padding: EdgeInsets.all(20),
-                        child: SizedBox(
-                          width: double.infinity,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 22),
-                                child: Text(
-                                  "Connections",
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                  textAlign: TextAlign.center,
-                                ),
-                              ),
-                              SizedBox(height: 20),
-                              SizedBox(
-                                width: double.infinity,
-                                key: _keyList,
-                                height: listHeight ?? 370,
-                                child: SingleChildScrollView(
-                                  scrollDirection: Axis.vertical,
-                                  child: Padding(
-                                    padding: EdgeInsets.symmetric(horizontal: 20),
-                                    child: Wrap(
-                                      spacing: 10,
-                                      runSpacing: 10,
-                                      direction: Axis.horizontal,
-                                      children: [
-                                        SizedBox(
-                                          width: 236,
-                                          height: 117,
-                                          child: Card(
-                                            color: AppColors.primary,
-                                            child: InkWell(
-                                              borderRadius: BorderRadius.circular(12),
-                                              onTap: () => Navigator.pushNamed(context, '/auth'),
-                                              child: Center(
-                                                child: Icon(
-                                                  Icons.add_circle_outline,
-                                                  size: 40,
-                                                  color: Colors.white,
-                                                ),
+                              Flexible(
+                                flex: 0,
+                                child: Container(
+                                  child: Column(
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.all(40),
+                                        child: SizedBox(
+                                          width: 800,
+                                          child: Column(
+                                            children: [
+                                              Text(
+                                                "Welcome to GUI ClickHouse",
+                                                style: TextStyle(color: Colors.black, fontSize: 44),
+                                                textAlign: TextAlign.center,
                                               ),
-                                            ),
+                                              SizedBox(height: 20),
+                                              Text(
+                                                "GUI ClickHouse is not official graphical user interface (GUI) tool for ClickHouse. It allow you connect to HTTP interface database and design, create and browse schemas.",
+                                                style: TextStyle(color: Colors.black, fontSize: 18),
+                                                textAlign: TextAlign.center,
+                                              ),
+                                            ],
                                           ),
                                         ),
-                                        for (int i = 0; i < 10; i++)
-                                          SizedBox(
-                                            width: 236,
-                                            child: Card(
-                                              child: InkWell(
-                                                borderRadius: BorderRadius.circular(12),
-                                                onTap: () => debugPrint('click card'),
-                                                child: Padding(
-                                                  padding: EdgeInsets.all(12),
-                                                  child: Column(
-                                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                                    children: [
-                                                      Text(
-                                                        "Localhost",
-                                                        overflow: TextOverflow.ellipsis,
-                                                        style: TextStyle(color: Colors.black, fontSize: 18),
-                                                        textAlign: TextAlign.center,
+                                      ),
+                                      SizedBox(
+                                        width: 200,
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                          children: [
+                                            IconButton(
+                                              tooltip: "Documentation",
+                                              onPressed: () => debugPrint(''),
+                                              icon: Icon(Icons.help_outline),
+                                            ),
+                                            IconButton(
+                                              tooltip: "Source",
+                                              onPressed: () => debugPrint(''),
+                                              icon: Icon(Icons.code),
+                                            ),
+                                            IconButton(
+                                              tooltip: "Group",
+                                              onPressed: () => debugPrint(''),
+                                              icon: Icon(Icons.forum_outlined),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      SizedBox(height: 35),
+                                      Row(
+                                        children: [
+                                          Padding(
+                                            padding: EdgeInsets.symmetric(horizontal: 42),
+                                            child: Text(
+                                              "Connections",
+                                              style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                              textAlign: TextAlign.center,
+                                            ),
+                                          ),
+                                          Spacer(),
+                                        ],
+                                      ),
+                                      SizedBox(height: 10),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Flexible(
+                                flex: 1,
+                                child: Padding(
+                                  padding: EdgeInsets.only(
+                                    left: 20,
+                                    top: 0,
+                                    right: 20,
+                                    bottom: 40,
+                                  ),
+                                  child: SizedBox(
+                                    width: double.infinity,
+                                    height: double.infinity,
+                                    child: SingleChildScrollView(
+                                      scrollDirection: Axis.vertical,
+                                      child: Padding(
+                                        padding: EdgeInsets.only(
+                                          left: 10,
+                                          top: 0,
+                                          right: 10,
+                                          bottom: 15,
+                                        ),
+                                        child: Wrap(
+                                          direction: Axis.horizontal,
+                                          children: [
+                                            SizedBox(
+                                              width: (width - 69) / 4,
+                                              height: 127,
+                                              child: Padding(
+                                                padding: EdgeInsets.all(5),
+                                                child: Card(
+                                                  color: AppColors.primary,
+                                                  child: InkWell(
+                                                    borderRadius: BorderRadius.circular(12),
+                                                    onTap: () => Navigator.pushNamed(context, '/auth'),
+                                                    child: Center(
+                                                      child: Icon(
+                                                        Icons.add_circle_outline,
+                                                        size: 40,
+                                                        color: Colors.white,
                                                       ),
-                                                      SizedBox(height: 15),
-                                                      Text(
-                                                        "default",
-                                                        overflow: TextOverflow.ellipsis,
-                                                        style: TextStyle(color: Colors.black.withOpacity(0.7), fontSize: 14),
-                                                        textAlign: TextAlign.center,
-                                                      ),
-                                                      SizedBox(height: 4),
-                                                      Text(
-                                                        "http://localhost:18123",
-                                                        overflow: TextOverflow.ellipsis,
-                                                        style: TextStyle(color: Colors.black.withOpacity(0.7), fontSize: 14),
-                                                        textAlign: TextAlign.center,
-                                                      ),
-                                                    ],
+                                                    ),
                                                   ),
                                                 ),
                                               ),
                                             ),
-                                          ),
-                                      ],
+                                            for (int i = 0; i < 22; i++)
+                                              SizedBox(
+                                                  width: (width - 69) / 4,
+                                                  child: Padding(
+                                                    padding: EdgeInsets.all(5),
+                                                    child: Card(
+                                                      child: InkWell(
+                                                        borderRadius: BorderRadius.circular(12),
+                                                        onTap: () => debugPrint('click card'),
+                                                        child: Padding(
+                                                          padding: EdgeInsets.all(12),
+                                                          child: Column(
+                                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                                            children: [
+                                                              Text(
+                                                                "Localhost",
+                                                                overflow: TextOverflow.ellipsis,
+                                                                style: TextStyle(color: Colors.black, fontSize: 18),
+                                                                textAlign: TextAlign.center,
+                                                              ),
+                                                              SizedBox(height: 15),
+                                                              Text(
+                                                                "default",
+                                                                overflow: TextOverflow.ellipsis,
+                                                                style: TextStyle(color: Colors.black.withOpacity(0.7), fontSize: 14),
+                                                                textAlign: TextAlign.center,
+                                                              ),
+                                                              SizedBox(height: 4),
+                                                              Text(
+                                                                "http://localhost:18123",
+                                                                overflow: TextOverflow.ellipsis,
+                                                                style: TextStyle(color: Colors.black.withOpacity(0.7), fontSize: 14),
+                                                                textAlign: TextAlign.center,
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  )),
+                                          ],
+                                        ),
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -267,11 +295,11 @@ class _HomeScreenState extends StateApp<HomeScreen> {
                             ],
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ],
-              )
+              ),
             ),
           );
         },
