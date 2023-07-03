@@ -40,14 +40,80 @@ class _ConnectScreenState extends StateApp<ConnectScreen> {
                 padding: EdgeInsets.only(right: Platform.isMacOS ? 2 : 0),
                 tooltip: 'Back',
                 onPressed: () => Navigator.of(context).pop(),
-              ),            ),
-            body: Container(
-              width: double.infinity,
-              height: double.infinity,
-              color: const Color(0XFFE8ECF5),
-              child: const Center(
-                child: Text('Test'),
               ),
+            ),
+            body: Row(
+              children: [
+                Flexible(
+                  flex: 0,
+                  child: Container(
+                    color: const Color(0XFFE8ECF5),
+                    height: double.infinity,
+                    child: SingleChildScrollView(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+                        child: Column(
+                          children: [
+                            for (int i = 0; i < 3; i++)
+                              Column(
+                                children: [
+                                  Card(
+                                    color: Colors.white,
+                                    elevation: 0,
+                                    child: InkWell(
+                                      borderRadius: BorderRadius.circular(12),
+                                      onTap: () => debugPrint('click'),
+                                      child: Padding(
+                                        padding: EdgeInsets.only(left: 20, top: 8, right: 8, bottom: 8),
+                                        child: Row(
+                                          children: [
+                                            Text(
+                                              'my_table_$i',
+                                              overflow: TextOverflow.ellipsis,
+                                              style: TextStyle(color: Colors.black, fontSize: 18),
+                                            ),
+                                            SizedBox(width: 12),
+                                            Icon(Icons.arrow_drop_down_sharp),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(height: 8),
+                                ],
+                              ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Flexible(
+                  child: Container(
+                    color: Colors.white,
+                    height: double.infinity,
+                    child: SingleChildScrollView(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(vertical: 15, horizontal: 18),
+                        child: Column(
+                          children: [
+                            for (int i = 0; i < 15; i++)
+                              Column(
+                                children: [
+                                  Container(
+                                    color: i % 2 == 0 ? Color(0XFFE8ECF5) : Colors.white,
+                                    width: double.infinity,
+                                    height: 42,
+                                  ),
+                                ],
+                              ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           );
         },
