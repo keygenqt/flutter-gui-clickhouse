@@ -12,9 +12,8 @@ final appTheme = defaultTheme.copyWith(
     thumbVisibility: MaterialStateProperty.all<bool>(true),
   ),
   cardTheme: defaultTheme.cardTheme.copyWith(
-    shadowColor: AppColors.primary.withOpacity(0.7),
     color: Colors.white,
-    elevation: 2,
+    elevation: 0,
   ),
   inputDecorationTheme: defaultTheme.inputDecorationTheme.copyWith(
     border: const OutlineInputBorder(

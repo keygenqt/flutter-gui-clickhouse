@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_gui_clickhouse/base/di/app_di.dart';
@@ -17,6 +19,8 @@ class HomeScreen extends StatefulWidgetApp {
 }
 
 class _HomeScreenState extends StateApp<HomeScreen> {
+  bool _dialogShow = false;
+
   @override
   Widget buildWide(
     BuildContext context,
@@ -164,17 +168,130 @@ class _HomeScreenState extends StateApp<HomeScreen> {
                                     SizedBox(height: 35),
                                     Row(
                                       children: [
+                                        SizedBox(width: 42),
                                         Padding(
-                                          padding: EdgeInsets.symmetric(horizontal: 42),
+                                          padding: EdgeInsets.only(bottom: 2),
                                           child: Text(
                                             "Connections",
                                             style: TextStyle(
                                               color: Colors.black,
-                                              fontSize: 20,
+                                              fontSize: 24,
                                               fontWeight: FontWeight.bold,
                                             ),
                                             textAlign: TextAlign.center,
                                           ),
+                                        ),
+                                        SizedBox(width: 8),
+                                        IconButton(
+                                          tooltip: "Add Connection",
+                                          icon: Icon(Icons.add_circle_outline),
+                                          // onPressed: () => Navigator.pushNamed(context, '/auth'),
+                                          onPressed: () {
+                                            setState(() {
+                                              _dialogShow = true;
+                                            });
+
+                                            showDialog(
+                                              context: context,
+                                              barrierColor: Colors.transparent,
+                                              builder: (BuildContext context) {
+                                                bool _passwordVisible = false;
+
+                                                return Material(
+                                                  color: Colors.transparent,
+                                                  child: Stack(
+                                                    children: [
+                                                      GestureDetector(
+                                                        onTap: () {
+                                                          setState(() {
+                                                            _dialogShow = false;
+                                                          });
+                                                          Navigator.pop(context);
+                                                        },
+                                                      ),
+                                                      StatefulBuilder(
+                                                        builder: (context, setState) {
+                                                          return Column(
+                                                            children: [
+                                                              Spacer(),
+                                                              Center(
+                                                                child: ClipRRect(
+                                                                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                                                                  child: Container(
+                                                                    color: Colors.white,
+                                                                    width: 450,
+                                                                    child: Padding(
+                                                                      padding: EdgeInsets.all(40),
+                                                                      child: Form(
+                                                                        child: Column(
+                                                                          children: [
+                                                                            Text(
+                                                                              "Connection",
+                                                                              style: TextStyle(fontSize: 24),
+                                                                              textAlign: TextAlign.center,
+                                                                            ),
+                                                                            SizedBox(height: 10),
+                                                                            Text(
+                                                                              "You can not enter a password, by default it is not",
+                                                                              style: TextStyle(color: Colors.black.withOpacity(0.5), fontSize: 12),
+                                                                              textAlign: TextAlign.center,
+                                                                            ),
+                                                                            SizedBox(height: 30),
+                                                                            TextFormField(
+                                                                              keyboardType: TextInputType.url,
+                                                                              decoration: InputDecoration(
+                                                                                labelText: "Server",
+                                                                                hintText: "http://localhost:18123/",
+                                                                              ),
+                                                                            ),
+                                                                            SizedBox(height: 20),
+                                                                            TextFormField(
+                                                                              decoration: InputDecoration(
+                                                                                labelText: "User",
+                                                                                hintText: "default",
+                                                                              ),
+                                                                            ),
+                                                                            SizedBox(height: 20),
+                                                                            TextFormField(
+                                                                              obscureText: !_passwordVisible,
+                                                                              decoration: InputDecoration(
+                                                                                labelText: "Password",
+                                                                                suffixIcon: IconButton(
+                                                                                  icon: Icon(
+                                                                                    _passwordVisible ? Icons.visibility_off : Icons.visibility,
+                                                                                  ),
+                                                                                  onPressed: () => setState(() {
+                                                                                    _passwordVisible = !_passwordVisible;
+                                                                                  }),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                            SizedBox(height: 30),
+                                                                            SizedBox(
+                                                                              width: double.infinity,
+                                                                              child: ElevatedButton(
+                                                                                onPressed: () => debugPrint('test'),
+                                                                                child: Text("Submit"),
+                                                                              ),
+                                                                            )
+                                                                          ],
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              Spacer(),
+                                                            ],
+                                                          );
+                                                        },
+                                                      ),
+                                                    ],
+                                                  ),
+                                                );
+                                              },
+                                            );
+                                          },
                                         ),
                                         Spacer(),
                                       ],
@@ -208,28 +325,7 @@ class _HomeScreenState extends StateApp<HomeScreen> {
                                       child: Wrap(
                                         direction: Axis.horizontal,
                                         children: [
-                                          SizedBox(
-                                            width: (width - 69) / 4,
-                                            height: 127,
-                                            child: Padding(
-                                              padding: EdgeInsets.all(5),
-                                              child: Card(
-                                                color: AppColors.primary,
-                                                child: InkWell(
-                                                  borderRadius: BorderRadius.circular(12),
-                                                  onTap: () => Navigator.pushNamed(context, '/auth'),
-                                                  child: Center(
-                                                    child: Icon(
-                                                      Icons.add_circle_outline,
-                                                      size: 40,
-                                                      color: Colors.white,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          for (int i = 0; i < 22; i++)
+                                          for (int i = 0; i < 14; i++)
                                             SizedBox(
                                                 width: (width - 69) / 4,
                                                 child: Padding(
@@ -244,7 +340,7 @@ class _HomeScreenState extends StateApp<HomeScreen> {
                                                           crossAxisAlignment: CrossAxisAlignment.start,
                                                           children: [
                                                             Text(
-                                                              "Localhost",
+                                                              "Localhost ${i + 1}",
                                                               overflow: TextOverflow.ellipsis,
                                                               style: TextStyle(color: Colors.black, fontSize: 18),
                                                               textAlign: TextAlign.center,
@@ -280,6 +376,15 @@ class _HomeScreenState extends StateApp<HomeScreen> {
                         ),
                       ),
                     ],
+                  ),
+                  Visibility(
+                    visible: _dialogShow,
+                    child: BackdropFilter(
+                      filter: ImageFilter.blur(sigmaX: 3.0, sigmaY: 3.0),
+                      child: Container(
+                        color: Colors.black.withOpacity(0.5),
+                      ),
+                    ),
                   ),
                 ],
               ),
