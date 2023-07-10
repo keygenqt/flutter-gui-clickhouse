@@ -1,3 +1,17 @@
 {
-    "homeTitle": "Home"
+    "homeTitle": "Welcome to GUI ClickHouse",
+    "homeSubtitle": "GUI ClickHouse is not official graphical user interface (GUI) tool for ClickHouse. It allow you connect to HTTP interface database and design, create and browse schemas.",
+    "homeLinkDoc": "Documentation",
+    "homeLinkSource": "Source",
+    "homeLinkGroup": "Group",
+    "homeActionTitle": "Connections",
+    "homeActionAdd": "Add connection",
+    "homeFormConnectTitle": "Connection",
+    "homeFormConnectSubtitle": "You can not enter a password, by default it is not",
+    "homeFormConnectFieldLabelServer": "Server",
+    "homeFormConnectFieldHintServer": "http://localhost:18123/",
+    "homeFormConnectFieldLabelUser": "User",
+    "homeFormConnectFieldHintUser": "default",
+    "homeFormConnectFieldLabelPassword": "Password",
+    "homeFormConnectSubmit": "Submit"
 }
