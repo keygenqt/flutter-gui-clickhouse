@@ -1,11 +1,10 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_gui_clickhouse/base/di/app_di.dart';
 import 'package:flutter_gui_clickhouse/components/base/export.dart';
 import 'package:flutter_gui_clickhouse/pages/connect/model.dart';
 import 'package:flutter_gui_clickhouse/theme/colors.dart';
+import 'package:flutter_gui_clickhouse/theme/radius.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 /// Main connect screen
@@ -19,6 +18,8 @@ class ConnectScreen extends StatefulWidgetApp {
 }
 
 class _ConnectScreenState extends StateApp<ConnectScreen> {
+  int _indexMenu = 0;
+
   @override
   Widget buildWide(
     BuildContext context,
@@ -29,84 +30,220 @@ class _ConnectScreenState extends StateApp<ConnectScreen> {
       child: ScopedModelDescendant<ConnectModel>(
         builder: (context, child, model) {
           return Scaffold(
-            appBar: AppBar(
-              foregroundColor: Colors.white,
-              backgroundColor: AppColors.primary,
-              title: Text("Connect"),
-              leading: IconButton(
-                icon: Icon(
-                  Platform.isMacOS ? Icons.arrow_back_ios_new_rounded : Icons.arrow_back,
-                ),
-                padding: EdgeInsets.only(right: Platform.isMacOS ? 2 : 0),
-                tooltip: 'Back',
-                onPressed: () => Navigator.of(context).pop(),
-              ),
-            ),
             body: Row(
               children: [
                 Flexible(
                   flex: 0,
-                  child: Container(
-                    color: const Color(0XFFE8ECF5),
-                    height: double.infinity,
-                    child: SingleChildScrollView(
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 16),
-                        child: Column(
-                          children: [
-                            for (int i = 0; i < 3; i++)
-                              Column(
-                                children: [
-                                  Card(
-                                    color: Colors.white,
-                                    elevation: 0,
-                                    child: InkWell(
-                                      borderRadius: BorderRadius.circular(12),
-                                      onTap: () => debugPrint('click'),
-                                      child: Padding(
-                                        padding: EdgeInsets.only(left: 20, top: 8, right: 8, bottom: 8),
-                                        child: Row(
-                                          children: [
-                                            Text(
-                                              'my_table_$i',
-                                              overflow: TextOverflow.ellipsis,
-                                              style: TextStyle(color: Colors.black, fontSize: 18),
-                                            ),
-                                            SizedBox(width: 12),
-                                            Icon(Icons.arrow_drop_down_sharp),
-                                          ],
-                                        ),
+                  child: Stack(
+                    children: [
+                      Container(
+                        decoration: const BoxDecoration(
+                          border: Border(
+                            left: BorderSide(
+                              color: AppColors.background,
+                              width: 14,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Column(
+                        children: [
+                          Container(
+                            decoration: _indexMenu == 0
+                                ? const BoxDecoration(
+                                    color: AppColors.background,
+                                    border: Border(
+                                      left: BorderSide(
+                                        color: AppColors.primary,
+                                        width: 14,
+                                      ),
+                                    ),
+                                  )
+                                : const BoxDecoration(
+                                    border: Border(
+                                      left: BorderSide(
+                                        color: AppColors.background,
+                                        width: 14,
                                       ),
                                     ),
                                   ),
-                                  SizedBox(height: 8),
-                                ],
+                            child: IconButton(
+                              onPressed: () => setState(() {
+                                _indexMenu = 0;
+                              }),
+                              icon: Icon(
+                                Icons.dataset,
+                                color: _indexMenu == 0 ? AppColors.primary : AppColors.backgroundDark,
+                                size: 34,
                               ),
-                          ],
-                        ),
+                              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 13),
+                              style: TextButton.styleFrom(
+                                shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+                              ),
+                              isSelected: _indexMenu == 0,
+                            ),
+                          ),
+                          Container(
+                            decoration: _indexMenu == 1
+                                ? const BoxDecoration(
+                                    color: AppColors.background,
+                                    border: Border(
+                                      left: BorderSide(
+                                        color: AppColors.primary,
+                                        width: 14,
+                                      ),
+                                    ),
+                                  )
+                                : const BoxDecoration(
+                                    border: Border(
+                                      left: BorderSide(
+                                        color: AppColors.background,
+                                        width: 14,
+                                      ),
+                                    ),
+                                  ),
+                            child: IconButton(
+                              onPressed: () => setState(() {
+                                _indexMenu = 1;
+                              }),
+                              icon: Icon(
+                                Icons.stacked_bar_chart,
+                                color: _indexMenu == 1 ? AppColors.primary : AppColors.backgroundDark,
+                                size: 34,
+                              ),
+                              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 13),
+                              style: TextButton.styleFrom(
+                                shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+                              ),
+                              isSelected: _indexMenu == 1,
+                            ),
+                          ),
+                          Container(
+                            decoration: _indexMenu == 2
+                                ? const BoxDecoration(
+                                    color: AppColors.background,
+                                    border: Border(
+                                      left: BorderSide(
+                                        color: AppColors.primary,
+                                        width: 14,
+                                      ),
+                                    ),
+                                  )
+                                : const BoxDecoration(
+                                    border: Border(
+                                      left: BorderSide(
+                                        color: AppColors.background,
+                                        width: 14,
+                                      ),
+                                    ),
+                                  ),
+                            child: IconButton(
+                              onPressed: () => setState(() {
+                                _indexMenu = 2;
+                              }),
+                              icon: Icon(
+                                Icons.table_rows,
+                                color: _indexMenu == 2 ? AppColors.primary : AppColors.backgroundDark,
+                                size: 34,
+                              ),
+                              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 13),
+                              style: TextButton.styleFrom(
+                                shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+                              ),
+                              isSelected: _indexMenu == 2,
+                            ),
+                          ),
+                          Container(
+                            decoration: _indexMenu == 3
+                                ? const BoxDecoration(
+                                    color: AppColors.background,
+                                    border: Border(
+                                      left: BorderSide(
+                                        color: AppColors.primary,
+                                        width: 14,
+                                      ),
+                                    ),
+                                  )
+                                : const BoxDecoration(
+                                    border: Border(
+                                      left: BorderSide(
+                                        color: AppColors.background,
+                                        width: 14,
+                                      ),
+                                    ),
+                                  ),
+                            child: IconButton(
+                              onPressed: () => setState(() {
+                                _indexMenu = 3;
+                              }),
+                              icon: Icon(
+                                Icons.settings,
+                                color: _indexMenu == 3 ? AppColors.primary : AppColors.backgroundDark,
+                                size: 34,
+                              ),
+                              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 13),
+                              style: TextButton.styleFrom(
+                                shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+                              ),
+                              isSelected: _indexMenu == 3,
+                            ),
+                          ),
+                          const Spacer(),
+                          Container(
+                            decoration: const BoxDecoration(
+                              border: Border(
+                                left: BorderSide(
+                                  color: AppColors.background,
+                                  width: 14,
+                                ),
+                              ),
+                            ),
+                            child: IconButton(
+                              onPressed: () => Navigator.of(context).pop(),
+                              icon: const Icon(
+                                Icons.exit_to_app,
+                                color: AppColors.backgroundDark,
+                                size: 34,
+                              ),
+                              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 13),
+                              style: TextButton.styleFrom(
+                                shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
+                    ],
                   ),
                 ),
                 Flexible(
+                  flex: 1,
                   child: Container(
-                    color: Colors.white,
+                    color: AppColors.background,
                     height: double.infinity,
                     child: SingleChildScrollView(
                       child: Padding(
-                        padding: EdgeInsets.symmetric(vertical: 15, horizontal: 18),
+                        padding: EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                         child: Column(
                           children: [
-                            for (int i = 0; i < 15; i++)
-                              Column(
-                                children: [
-                                  Container(
-                                    color: i % 2 == 0 ? Color(0XFFE8ECF5) : Colors.white,
+                            for (int i = 0; i < 30; i++)
+                              Padding(
+                                  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                                  child: SizedBox(
                                     width: double.infinity,
-                                    height: 42,
-                                  ),
-                                ],
-                              ),
+                                    child: Card(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: AppRadius.small,
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsets.all(10),
+                                        child: Text(
+                                          'item: $i',
+                                          style: Theme.of(context).textTheme.titleLarge,
+                                        ),
+                                      ),
+                                    ),
+                                  ))
                           ],
                         ),
                       ),
