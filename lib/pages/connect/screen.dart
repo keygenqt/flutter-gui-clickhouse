@@ -19,6 +19,17 @@ class ConnectScreen extends StatefulWidgetApp {
 
 class _ConnectScreenState extends StateApp<ConnectScreen> {
   int _indexMenu = 0;
+  IconData getIcon(int index) {
+    switch (index) {
+      case 0:
+        return Icons.dataset;
+      case 1:
+        return Icons.table_rows;
+      case 2:
+        return Icons.stacked_bar_chart;
+    }
+    return Icons.settings;
+  }
 
   @override
   Widget buildWide(
@@ -37,181 +48,61 @@ class _ConnectScreenState extends StateApp<ConnectScreen> {
                   child: Stack(
                     children: [
                       Container(
-                        decoration: const BoxDecoration(
-                          border: Border(
-                            left: BorderSide(
-                              color: AppColors.background,
-                              width: 14,
-                            ),
-                          ),
-                        ),
+                        color: AppColors.background,
+                        width: 12,
                       ),
-                      Column(
-                        children: [
-                          Container(
-                            decoration: _indexMenu == 0
-                                ? const BoxDecoration(
-                                    color: AppColors.background,
-                                    border: Border(
-                                      left: BorderSide(
-                                        color: AppColors.primary,
-                                        width: 14,
-                                      ),
-                                    ),
-                                  )
-                                : const BoxDecoration(
-                                    border: Border(
-                                      left: BorderSide(
-                                        color: AppColors.background,
-                                        width: 14,
-                                      ),
-                                    ),
-                                  ),
-                            child: IconButton(
-                              onPressed: () => setState(() {
-                                _indexMenu = 0;
-                              }),
-                              icon: Icon(
-                                Icons.dataset,
-                                color: _indexMenu == 0 ? AppColors.primary : AppColors.backgroundDark,
-                                size: 34,
-                              ),
-                              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 13),
-                              style: TextButton.styleFrom(
-                                shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
-                              ),
-                              isSelected: _indexMenu == 0,
-                            ),
-                          ),
-                          Container(
-                            decoration: _indexMenu == 1
-                                ? const BoxDecoration(
-                                    color: AppColors.background,
-                                    border: Border(
-                                      left: BorderSide(
-                                        color: AppColors.primary,
-                                        width: 14,
-                                      ),
-                                    ),
-                                  )
-                                : const BoxDecoration(
-                                    border: Border(
-                                      left: BorderSide(
-                                        color: AppColors.background,
-                                        width: 14,
-                                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 12),
+                        child: Column(
+                          children: [
+                            for (int i = 0; i < 4; i++)
+                              Container(
+                                alignment: Alignment.centerLeft,
+                                decoration: _indexMenu == i
+                                    ? BoxDecoration(
+                                        color: _indexMenu == i ? AppColors.primary.withOpacity(0.8) : Colors.white,
+                                        border: Border(
+                                          left: BorderSide(
+                                            color: _indexMenu == i ? AppColors.primaryDark : AppColors.background,
+                                            width: 5,
+                                          ),
+                                        ),
+                                      )
+                                    : null,
+                                child: IconButton(
+                                  color: _indexMenu == i ? Colors.white : AppColors.primary,
+                                  onPressed: () => setState(() {
+                                    _indexMenu = i;
+                                  }),
+                                  icon: Padding(
+                                    padding:
+                                        _indexMenu == i ? const EdgeInsets.only(left: 0, right: 5) : const EdgeInsets.only(left: 2.5, right: 2.5),
+                                    child: Icon(
+                                      getIcon(i),
+                                      size: 30,
                                     ),
                                   ),
-                            child: IconButton(
-                              onPressed: () => setState(() {
-                                _indexMenu = 1;
-                              }),
-                              icon: Icon(
-                                Icons.stacked_bar_chart,
-                                color: _indexMenu == 1 ? AppColors.primary : AppColors.backgroundDark,
-                                size: 34,
-                              ),
-                              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 13),
-                              style: TextButton.styleFrom(
-                                shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
-                              ),
-                              isSelected: _indexMenu == 1,
-                            ),
-                          ),
-                          Container(
-                            decoration: _indexMenu == 2
-                                ? const BoxDecoration(
-                                    color: AppColors.background,
-                                    border: Border(
-                                      left: BorderSide(
-                                        color: AppColors.primary,
-                                        width: 14,
-                                      ),
-                                    ),
-                                  )
-                                : const BoxDecoration(
-                                    border: Border(
-                                      left: BorderSide(
-                                        color: AppColors.background,
-                                        width: 14,
-                                      ),
-                                    ),
+                                  padding: EdgeInsets.symmetric(horizontal: _indexMenu == i ? 30 : 32.5, vertical: 13),
+                                  style: TextButton.styleFrom(
+                                    shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
                                   ),
-                            child: IconButton(
-                              onPressed: () => setState(() {
-                                _indexMenu = 2;
-                              }),
-                              icon: Icon(
-                                Icons.table_rows,
-                                color: _indexMenu == 2 ? AppColors.primary : AppColors.backgroundDark,
-                                size: 34,
-                              ),
-                              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 13),
-                              style: TextButton.styleFrom(
-                                shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
-                              ),
-                              isSelected: _indexMenu == 2,
-                            ),
-                          ),
-                          Container(
-                            decoration: _indexMenu == 3
-                                ? const BoxDecoration(
-                                    color: AppColors.background,
-                                    border: Border(
-                                      left: BorderSide(
-                                        color: AppColors.primary,
-                                        width: 14,
-                                      ),
-                                    ),
-                                  )
-                                : const BoxDecoration(
-                                    border: Border(
-                                      left: BorderSide(
-                                        color: AppColors.background,
-                                        width: 14,
-                                      ),
-                                    ),
-                                  ),
-                            child: IconButton(
-                              onPressed: () => setState(() {
-                                _indexMenu = 3;
-                              }),
-                              icon: Icon(
-                                Icons.settings,
-                                color: _indexMenu == 3 ? AppColors.primary : AppColors.backgroundDark,
-                                size: 34,
-                              ),
-                              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 13),
-                              style: TextButton.styleFrom(
-                                shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
-                              ),
-                              isSelected: _indexMenu == 3,
-                            ),
-                          ),
-                          const Spacer(),
-                          Container(
-                            decoration: const BoxDecoration(
-                              border: Border(
-                                left: BorderSide(
-                                  color: AppColors.background,
-                                  width: 14,
+                                  isSelected: _indexMenu == i,
                                 ),
                               ),
-                            ),
-                            child: IconButton(
+                            const Spacer(),
+                            IconButton(
                               onPressed: () => Navigator.of(context).pop(),
                               icon: const Icon(
                                 Icons.exit_to_app,
-                                color: AppColors.backgroundDark,
-                                size: 34,
+                                size: 30,
                               ),
-                              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 13),
+                              padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 13),
                               style: TextButton.styleFrom(
                                 shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -223,27 +114,28 @@ class _ConnectScreenState extends StateApp<ConnectScreen> {
                     height: double.infinity,
                     child: SingleChildScrollView(
                       child: Padding(
-                        padding: EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+                        padding: const EdgeInsets.only(right: 10, top: 5, bottom: 5),
                         child: Column(
                           children: [
                             for (int i = 0; i < 30; i++)
                               Padding(
-                                  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                                  child: SizedBox(
-                                    width: double.infinity,
-                                    child: Card(
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: AppRadius.small,
-                                      ),
-                                      child: Padding(
-                                        padding: EdgeInsets.all(10),
-                                        child: Text(
-                                          'item: $i',
-                                          style: Theme.of(context).textTheme.titleLarge,
-                                        ),
+                                padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                                child: SizedBox(
+                                  width: double.infinity,
+                                  child: Card(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: AppRadius.small,
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(10),
+                                      child: Text(
+                                        'item: $i',
+                                        style: Theme.of(context).textTheme.titleLarge,
                                       ),
                                     ),
-                                  ))
+                                  ),
+                                ),
+                              ),
                           ],
                         ),
                       ),

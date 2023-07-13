@@ -5,9 +5,17 @@ import 'package:flutter_gui_clickhouse/theme/radius.dart';
 final defaultTheme = ThemeData.light(useMaterial3: true);
 
 final appTheme = defaultTheme.copyWith(
+  scaffoldBackgroundColor: Colors.white,
+  hoverColor: AppColors.primary.withOpacity(0.18),
+  splashColor: AppColors.primary.withOpacity(0.4),
+
   colorScheme: defaultTheme.colorScheme.copyWith(
     primary: AppColors.primary,
     secondary: AppColors.secondary,
+    background: AppColors.background,
+  ),
+  iconTheme: defaultTheme.iconTheme.copyWith(
+      color: AppColors.primary
   ),
   scrollbarTheme: defaultTheme.scrollbarTheme.copyWith(
     thumbVisibility: MaterialStateProperty.all<bool>(true),

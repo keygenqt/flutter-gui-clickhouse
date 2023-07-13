@@ -26,7 +26,10 @@ class HomeConnectActions extends StatelessWidgetApp {
         const SizedBox(width: 8),
         IconButton(
           tooltip: l10n.homeActionAdd,
-          icon: const Icon(Icons.add_circle_outline),
+          icon: Icon(
+            Icons.add_circle_outline,
+            color: Theme.of(context).textTheme.headlineSmall?.color,
+          ),
           onPressed: () {
             showDialog(
               context: context,

@@ -18,17 +18,26 @@ class HomeLinks extends StatelessWidgetApp {
           IconButton(
             tooltip: l10n.homeLinkDoc,
             onPressed: () => debugPrint(''),
-            icon: const Icon(Icons.help_outline),
+            icon: Icon(
+              Icons.help_outline,
+              color: Theme.of(context).textTheme.headlineSmall?.color,
+            ),
           ),
           IconButton(
             tooltip: l10n.homeLinkSource,
             onPressed: () => debugPrint(''),
-            icon: const Icon(Icons.code),
+            icon: Icon(
+              Icons.code,
+              color: Theme.of(context).textTheme.headlineSmall?.color,
+            ),
           ),
           IconButton(
             tooltip: l10n.homeLinkGroup,
             onPressed: () => debugPrint(''),
-            icon: const Icon(Icons.forum_outlined),
+            icon: Icon(
+              Icons.forum_outlined,
+              color: Theme.of(context).textTheme.headlineSmall?.color,
+            ),
           ),
         ],
       ),
