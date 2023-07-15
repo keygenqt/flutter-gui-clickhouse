@@ -4,4 +4,4 @@ GUI ClickHouse is not official graphical user interface (GUI) tool for ClickHous
 
 ## Preview
 
-![preview_1.gif](data%2Fpreview%2Fpreview_2.gif)
+![Screen_Recording_2023-07-15_at_12.45.28.gif](data%2Fpreview%2FScreen_Recording_2023-07-15_at_12.45.28.gif)
