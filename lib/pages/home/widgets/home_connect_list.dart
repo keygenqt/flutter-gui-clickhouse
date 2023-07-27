@@ -41,7 +41,7 @@ class HomeConnectList extends StatelessWidgetApp {
                       child: Card(
                         child: InkWell(
                           borderRadius: BorderRadius.circular(12),
-                          onTap: () => Navigator.pushNamed(context, '/connect'),
+                          onTap: () => Navigator.pushNamed(context, '/connection'),
                           child: Padding(
                             padding: const EdgeInsets.all(12),
                             child: Column(
